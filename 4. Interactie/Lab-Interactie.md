@@ -67,12 +67,12 @@ We roepen deze functie op bij het inlezen, en kennen de data toe aan onze compon
 De bedoeling is dat de gebruiker enkele nummers selecteert van Taylor Swift. <b>We houden dus een lijst bij van alle geselecteerde tracks.</b> Die nummers worden dan getoond op een grafiek. De y-as van de grafiek is altijd de dansbaarheid van het nummer. De x-coordinaat is ofwel de "energy" van het nummer, of het "tempo" van het nummer. <b>We houden dus bij of de gebruik energy of tempo wilt weergeven</b>.
 Taylor Swift heeft schijnbaar heel erg veel nummers. Om het de gebruiker gemakkelijker te maken kan je, in je zoektocht naar een nummer, filteren op album. <b>We hebben daarom ook nog een lijst nodig van alle albums uit de dataset en welk album de gebruiker heeft geselecteerd</b>. We breiden op basis van deze inzichten onze data uit:
     
-  let data = ref( []);
-  let albums = ref ( [] );
-  let selectedTracks = ref ( [] );
-  let selectedAlbum = ref ("Taylor Swift");
-  let yFilters = ref(['Energy', 'Tempo']);
-  let selectedFilter = ref( 'Energy');
+    let data = ref( []);
+    let albums = ref ( [] );
+    let selectedTracks = ref ( [] );
+    let selectedAlbum = ref ("Taylor Swift");
+    let yFilters = ref(['Energy', 'Tempo']);
+    let selectedFilter = ref( 'Energy');
 
 ### Opbouwen van een lijst van albums
 We gaan eerst nog die lijst van albums samenstellen. Dit is basisjavascript, dus probeer zeker eerst eens zelf of je dit lukt. Ik heb een methode `getAlbums` geschreven die ik toegevoegd:
@@ -93,11 +93,11 @@ Het tweede wat hier gebeurt is dat we overschakelen van een rij van objecten naa
 
 We roepen deze methode ten slotte op in `onMounted` en steken het resultaat in onze componentsvariabele:
 
-  const rawData = await d3.csv('taylorswift.csv', filterData);
-  console.log(rawData);
+    const rawData = await d3.csv('taylorswift.csv', filterData);
+    console.log(rawData);
 
-  data.value = rawData;
-  albums.value = getAlbums(rawData);
+    data.value = rawData;
+    albums.value = getAlbums();
 
 Als je dit even logt zou je moeten zien dat er 10 unieke albums zijn.
 
